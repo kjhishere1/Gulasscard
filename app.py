@@ -6,11 +6,11 @@ from gulasscard import Login, Get, Set, Memorize, Recall
 
 
 try:
-    if type((driver := Login(input(': '), getpass(': ')))) is not str:
+    if type((driver := Login(input('아이디: '), getpass('비밀번호: ')))) is not str:
         if (driver := Set(input('클래스카드 단어장 주소를 입력하세요.\n: '), driver=driver)) is not None:
-            if (key := input('리콜 학습이면 [R], 암기학습이면 [M]을 입력하세요.')) == 'R':
+            if (key := input('리콜 학습이면 [R], 암기학습이면 [M]을 입력하세요.\n[R/M]: ')) == 'R':
                 Recall(input('클래스카드 리콜학습 주소를 입력하세요.\n: '), Get(driver=driver))
-            elif key == "M"
+            elif key == "M":
                 Memorize(input('클래스카드 암기학습 주소를 입력하세요.\n: '), driver=driver)
             else:
                 print('정상적인 값이 아닙니다.')

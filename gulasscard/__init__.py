@@ -18,7 +18,7 @@ def get_driver(URL, waitby=(By.TAG_NAME, "body"), timeout=3, options=None):
     if options == None:
         options = webdriver.ChromeOptions()
         #options.add_experimental_option("detach", True)
-        #options.binary_location = r""
+        options.binary_location = r"C:\Users\super\Downloads\gc\chrome\App\Chrome-bin\chrome.exe"
 
     try:
         driver = webdriver.Chrome(options=options)
