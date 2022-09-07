@@ -1,14 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import WebDriverException
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.common.exceptions import ElementClickInterceptedException
-
-from bs4 import BeautifulSoup as Soup
 
 from time import sleep
 
@@ -23,7 +20,10 @@ def get_driver(URL, waitby=(By.TAG_NAME, "body"), timeout=3, options=None):
         #options.add_experimental_option("detach", True)
         #options.binary_location = r""
 
-    driver = webdriver.Chrome(options=options)
+    try:
+        driver = webdriver.Chrome(options=options)
+    except WebDriverException:
+        raise ValueError()
     driver.get(URL)
 
     WebDriverWait(driver, timeout).until(
